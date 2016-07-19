@@ -13,7 +13,5 @@ env.key_filename = "~/Downloads/ankush.pem"
 def system_info():
     local("echo SYSTEM")
     local("uname -a")
-    local('virtualenv venv')
-    local('source venv/bin/activate')
     local('pip install -r requirements.txt')
 
