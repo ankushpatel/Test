@@ -14,4 +14,5 @@ def system_info():
     local("echo SYSTEM")
     local("uname -a")
     local('pip install -r requirements.txt')
+    local('sudo apt-get update')
 
