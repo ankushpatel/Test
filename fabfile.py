@@ -11,6 +11,6 @@ env.key_filename = "~/Downloads/ankush.pem"
 
 
 def system_info():
-    local("echo SYSTEM INFORMATION")
+    local("echo SYSTEM")
     local("uname -a")
 
