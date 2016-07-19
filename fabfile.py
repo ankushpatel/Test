@@ -71,3 +71,7 @@ def setup_all():
     git_clone_and_setup()
     postgres_create_user()
     local('echo ****Setup Done****')
+
+def run_server():
+    local('sh runserver.sh')
+    local('curl http://54.169.175.156/')
