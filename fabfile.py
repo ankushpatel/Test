@@ -74,4 +74,6 @@ def setup_all():
 
 def run_server():
     local('sh runserver.sh &')
+
+def run_curl():
     local('curl http://54.169.175.156/')
