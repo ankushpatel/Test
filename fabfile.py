@@ -16,3 +16,8 @@ def system_info():
     local('pip install -r requirements.txt')
     local('sudo apt-get update')
 
+def postgres_create_user():
+    with settings(warn_only=True):
+        local('sudo -u postgres createuser -P odyssey')
+        local('sudo -u postgres createdb -O odyssey iote_odyssey')
+        local('sudo -u postgres creatdeb -O odyssey testing_odyssey')
