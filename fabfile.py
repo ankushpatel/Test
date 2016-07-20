@@ -76,6 +76,7 @@ def setup_all():
     local('pip install -r requirements.txt')
     postgres_create_user()
     setup_timezone_to_ist()
+    test_mode()
     local('echo ****Setup Done****')
 
 
@@ -85,7 +86,7 @@ def test_mode():
 
 
 def run_server():
-    local('sh runserver.sh &')  
+    local('sh runserver.sh &')
 
 
 def run_curl():
