@@ -58,11 +58,12 @@ def postgres_create_user():
     with settings(warn_only=True):
         local('sudo -u postgres createuser -P odyssey')
         local('sudo -u postgres createdb -O odyssey iote_odyssey')
-        local('sudo -u postgres creatdeb -O odyssey testing_odyssey')
+        local('sudo -u postgres createdb -O odyssey testing_odyssey')
 
 
 def install_all():
     update_apt_get()
+    setup_timezone_to_ist()
     install_pip()
     install_python_utils()
     install_virtualenv()
@@ -75,14 +76,11 @@ def setup_all():
     # git_clone_and_setup()
     local('pip install -r requirements.txt')
     postgres_create_user()
-    setup_timezone_to_ist()
-    test_mode()
+    # test_mode()
     local('echo ****Setup Done****')
 
 
 def test_mode():
-    local('pwd')
-    local('cd ./tests')
     local('python test_models.py')
 
 
