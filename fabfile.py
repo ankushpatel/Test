@@ -81,7 +81,8 @@ def setup_all():
 
 
 def test_mode():
-    local('cd tests')
+    local('pwd')
+    local('cd ./tests')
     local('python test_models.py')
 
 
