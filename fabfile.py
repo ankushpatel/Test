@@ -42,12 +42,16 @@ def install_git():
     local('sudo apt-get install git -y')
 
 
-def git_clone_and_setup():
-    with settings(warn_only=True):
-        with cd('~'):
-            local("git clone https://github.com/bhiwalakhil/odyssey.git")
-        with cd('~/odyssey'):
-            local('pip install -r requirements.txt')
+# def git_clone_and_setup():
+#     with settings(warn_only=True)
+#         with cd('~'):
+#             local("git clone https://github.com/bhiwalakhil/odyssey.git")
+#         with cd('~/odyssey'):
+#             local('pip install -r requirements.txt')
+
+
+def setup_timezone_to_ist():
+    local("sudo timedatectl set-timezone 'Asia/Kolkata'")
 
 
 def postgres_create_user():
@@ -68,12 +72,21 @@ def install_all():
 
 
 def setup_all():
-    git_clone_and_setup()
+    # git_clone_and_setup()
+    local('pip install -r requirements.txt')
     postgres_create_user()
+    setup_timezone_to_ist()
     local('echo ****Setup Done****')
 
+
+def test_mode():
+    local('cd tests')
+    local('python test_models.py')
+
+
 def run_server():
-    local('sh runserver.sh &')
+    local('sh runserver.sh &')  
+
 
 def run_curl():
     local('curl http://54.169.175.156/')
